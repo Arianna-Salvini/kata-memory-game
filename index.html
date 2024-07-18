@@ -14,10 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <!-- Fontawosome -->
-
-    <script src="https://kit.fontawesome.com/ac8f8c0862.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -30,14 +26,21 @@
             </div>
             <div class="banner">
                 <button class="pointer" id="startBtn">Start</button>
-                <h2>Errors:</h2>
+                <h2 class="counter">Errors:</h2>
             </div>
             <div class="table" id="cardContainer" s>
                 <!-- This div will be populated dynamically -->
             </div>
     </main>
 
-    <script src="./assets/js/main.js"></script>
+    <!-- Modal for win -->
+    <div class="modal" id="modal">
+        <div class="modal-container">
+            <h3 class="modal-title" id="modal-title">You win!</h3>
+            <button type="button" class="button pointer" id="play-again">Play Again</button>
+        </div>
+
+        <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
