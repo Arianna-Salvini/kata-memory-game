@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* font-family: fantasy; */
+}
+
+/* Utility */
+
+.container {
+    width: 1200px;
+    margin: 3rem auto;
+    border: 1px solid black;
+}
