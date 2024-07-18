@@ -1,10 +1,21 @@
 * {
+    /* reet rules */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    /* font */
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-style: normal;
+    color: var(--primary);
+}
+
+body {
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary), var(--darker), var(--secondary));
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Colors */
@@ -13,7 +24,9 @@
     --secondary: #ff4499;
     --darkest: #000000;
     --darker: #0a0047;
-    --dark: #004687,
+    --dark: #004687;
+    --lightest: #ffffff;
+    ;
 }
 
 /* Utility */
@@ -21,5 +34,50 @@
 .container {
     width: 1200px;
     margin: 3rem auto;
-    border: 1px solid black;
+
+}
+
+/* Main */
+
+.jumbo {
+    text-align: center;
+
+    h1 {
+        font-size: 5rem;
+        text-shadow: 5px -10px 25px var(--secondary);
+        padding: 2rem;
+    }
+}
+
+.banner {
+    padding: 2rem 0 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+        font-size: 2rem;
+        padding: 1.5rem 1.7rem;
+        background: none;
+        border-color: var(--secondary);
+    }
+}
+
+.table {
+    margin: 2rem 0;
+    background: linear-gradient(45deg, var(--secondary), var(--darker), var(--primary));
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid var(--lightest);
+    box-shadow: 0 0 20px var(--lightest);
+    display: flex;
+    flex-wrap: wrap;
+
+    .cell {
+        width: calc(100% / 4);
+        aspect-ratio: 1;
+        border: 1px solid var(--lightest);
+        box-shadow: 0 0 20px var(--lightest);
+    }
+
 }
