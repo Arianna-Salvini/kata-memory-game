@@ -2,7 +2,18 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* font-family: fantasy; */
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Colors */
+:root {
+    --primary: #00ffd2;
+    --secondary: #ff4499;
+    --darkest: #000000;
+    --darker: #0a0047;
+    --dark: #004687,
 }
 
 /* Utility */
