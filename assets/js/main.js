@@ -22,7 +22,7 @@ startBtn.addEventListener('click', function () {
 
         // create cards
         const memoryCard = document.createElement('div');
-        memoryCard.classList.add('memory_card');
+        memoryCard.classList.add('memory_card', 'pointer');
 
         const front = document.createElement('div');
         front.classList.add('front');
