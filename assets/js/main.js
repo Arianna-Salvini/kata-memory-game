@@ -83,13 +83,14 @@ function startGame() {
 
 // Fisher-Yates algorithm
 function randomizerArraySimb(array) {
+    // Iterate from the end of the array to the beginning
     for (let i = array.length - 1; i > 0; i--) {
-        // Generate random index between 0 and i (inclusive)
+        // Generate a random index between 0 and i
         const random = Math.floor(Math.random() * (i + 1));
-        // Swap elements of array[i] and array[random]
+        // Swap elements at indices i and random
         [array[i], array[random]] = [array[random], array[i]];
     }
-    // console.log(array);
+    // Return the shuffled array
     return array;
 }
 
