@@ -17,3 +17,62 @@ for (let i = 0; i < numberOfCells; i++) {
     cell.classList.add('cell');
     gameField.appendChild(cell);
 }
+
+// FUNCTION
+function startGame() {
+
+    //Duplicate symbols array with spread operator
+    const symbolsDouble = [...symbols, ...symbols];
+    console.log(symbolsDouble);
+    //Shuffle combined array of symbols to randomize their index order -> function
+    const symbolsShuffled = randomizerArraySimb(symbolsDouble)
+    console.log(symbolsShuffled);
+
+    // Generate dinamically memory cards
+    const cells = document.querySelectorAll('.cell');
+
+    cells.forEach((cell, index) => {
+        // Delete previewsly cells' content
+        cell.innerHTML = '';
+        // Create cards
+        const memoryCard = document.createElement('div');
+        memoryCard.classList.add('memory_card', 'pointer');
+
+        // Front of card
+        const front = document.createElement('div');
+        front.classList.add('front');
+        front.textContent = '👾';
+
+        memoryCard.appendChild(front);
+
+        // Back of card
+        const back = document.createElement('div');
+        back.classList.add('back');
+        back.textContent = symbolsShuffled[index];
+
+        memoryCard.appendChild(back);
+
+        cell.appendChild(memoryCard);
+
+        // Add click event in order to flip the card
+        memoryCard.addEventListener('click', function () {
+            if (lockCard || memoryCard.classList.contains('is-flipped')) return; //easy exit or guard closure -> se una delle due è vera blocco l'esecuzione
+
+            memoryCard.classList.add('is-flipped');
+            selectedCards.push(memoryCard);
+        });
+    });
+};
+
+// Fish-Yates algorithm
+function randomizerArraySimb(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        // Generate casual index between 0 to i (included)
+        const random = Math.floor(Math.random() * (i + 1));
+        // Change elementis of array[i] and array[random]
+        [array[i], array[random]] = [array[random], array[i]];
+    }
+    // console.log(array);
+    return array;
+}
+
