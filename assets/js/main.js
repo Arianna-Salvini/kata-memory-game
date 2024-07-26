@@ -69,7 +69,7 @@ function startGame() {
 
         // Add click event in order to flip the card
         memoryCard.addEventListener('click', function () {
-            if (lockCard || memoryCard.classList.contains('is-flipped')) return; // Easy exit or guard clause -> if either is true, block execution
+            if (lockCard || memoryCard.classList.contains('is-flipped')) return; // Use early return to exit the function early if conditions are met, simplifying logic and reducing nesting.
 
             memoryCard.classList.add('is-flipped');
             selectedCards.push(memoryCard);
