@@ -94,6 +94,7 @@ button:hover {
     }
 }
 
+/* Banner for button start and errors counter */
 .banner {
     width: 100%;
     padding: 1.5em 0 2rem;
@@ -102,6 +103,7 @@ button:hover {
     align-items: center;
 }
 
+/* Game table */
 .table {
     width: 100%;
     margin: 1rem 0 4.3rem;
@@ -163,6 +165,7 @@ button:hover {
     }
 }
 
+/* Memory card flip effect */
 .memory_card .front {
     transform: rotateY(0deg);
 }
