@@ -18,9 +18,14 @@ for (let i = 0; i < numberOfCells; i++) {
     gameField.appendChild(cell);
 }
 
+
+// Event listener for Start button
+startBtn.addEventListener('click', function () {
+    startGame();// Star/restart game
+});
+
 // FUNCTION
 function startGame() {
-
     selectedCards = [];
     lockCard = false;
     errors = 0;
@@ -108,3 +113,15 @@ function checkMatch() {
         }, 800);
     }
 };
+
+// Function to show the modal in case of winninig
+function showWinModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'flex'; // Show Modal
+}
+
+// Function to hide/close modal
+function hideModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none'; // Nasconde la modale
+}
