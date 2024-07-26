@@ -1,4 +1,4 @@
-// Generate dinamically table with 12 cell
+// Generate dynamically table with 12 cells
 const gameField = document.getElementById('gameField');
 const numberOfCells = 12;
 // Get button
@@ -6,12 +6,12 @@ const startBtn = document.getElementById('startBtn');
 const playAgainBtn = document.getElementById('play_again');
 // Symbols array for memory-card back to match
 const symbols = ['☄️', '🚀', '🛸', '🪐', '👽', '💫'];
-// variables 
+// Support variables
 let selectedCards = [];
 let lockCard = false;
 let errors = 0;
 
-// Creo le celle per la table
+// Create cells for the table
 for (let i = 0; i < numberOfCells; i++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
@@ -22,30 +22,30 @@ for (let i = 0; i < numberOfCells; i++) {
 // Event listener for Start button
 startBtn.addEventListener('click', function () {
     resetGame(); // Reset game 
-    startGame();// Star/restart game
+    startGame(); // Start/restart game
 });
 
-// Event listener per il pulsante Play Again
+// Event listener for Play Again button
 playAgainBtn.addEventListener('click', function () {
     resetGame(); // Reset game 
-    startGame();// Restart game
+    startGame(); // Restart game
 });
 
 // FUNCTION
 function startGame() {
 
-    //Duplicate symbols array with spread operator
+    // Duplicate symbols array with spread operator
     const symbolsDouble = [...symbols, ...symbols];
     console.log(symbolsDouble);
-    //Shuffle combined array of symbols to randomize their index order -> function
+    // Shuffle combined array of symbols to randomize their index order -> function
     const symbolsShuffled = randomizerArraySimb(symbolsDouble)
     console.log(symbolsShuffled);
 
-    // Generate dinamically memory cards
+    // Generate dynamically memory cards
     const cells = document.querySelectorAll('.cell');
 
     cells.forEach((cell, index) => {
-        // Delete previewsly cells' content
+        // Delete previously cells' content
         cell.innerHTML = '';
         // Create cards
         const memoryCard = document.createElement('div');
@@ -69,7 +69,7 @@ function startGame() {
 
         // Add click event in order to flip the card
         memoryCard.addEventListener('click', function () {
-            if (lockCard || memoryCard.classList.contains('is-flipped')) return; //easy exit or guard closure -> se una delle due è vera blocco l'esecuzione
+            if (lockCard || memoryCard.classList.contains('is-flipped')) return; // Easy exit or guard clause -> if either is true, block execution
 
             memoryCard.classList.add('is-flipped');
             selectedCards.push(memoryCard);
@@ -81,12 +81,12 @@ function startGame() {
     });
 };
 
-// Fish-Yates algorithm
+// Fisher-Yates algorithm
 function randomizerArraySimb(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        // Generate casual index between 0 to i (included)
+        // Generate random index between 0 and i (inclusive)
         const random = Math.floor(Math.random() * (i + 1));
-        // Change elementis of array[i] and array[random]
+        // Swap elements of array[i] and array[random]
         [array[i], array[random]] = [array[random], array[i]];
     }
     // console.log(array);
@@ -117,7 +117,7 @@ function checkMatch() {
     }
 };
 
-// Function to show the modal in case of winninig
+// Function to show the modal in case of winning
 function showWinModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'flex'; // Show Modal
@@ -126,15 +126,15 @@ function showWinModal() {
 // Function to hide/close modal
 function hideModal() {
     const modal = document.getElementById('modal');
-    modal.style.display = 'none'; // Nasconde la modale
+    modal.style.display = 'none'; // Hide the modal
 }
 
-// Function for reset game state
+// Function to reset game state
 function resetGame() {
     selectedCards = [];
     lockCard = false;
     errors = 0;
-    document.querySelector('.counter').textContent = ` Errors: ${errors}`;
+    document.querySelector('.counter').textContent = `Errors: ${errors}`;
     const modal = document.getElementById('modal');
     modal.classList.remove('modal-open');
 }
