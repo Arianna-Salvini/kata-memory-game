@@ -21,6 +21,11 @@ for (let i = 0; i < numberOfCells; i++) {
 // FUNCTION
 function startGame() {
 
+    selectedCards = [];
+    lockCard = false;
+    errors = 0;
+    document.querySelector('.counter').textContent = ` Errors: ${errors}`;
+
     //Duplicate symbols array with spread operator
     const symbolsDouble = [...symbols, ...symbols];
     console.log(symbolsDouble);
@@ -60,6 +65,10 @@ function startGame() {
 
             memoryCard.classList.add('is-flipped');
             selectedCards.push(memoryCard);
+
+            if (selectedCards.length === 2) {
+                checkMatch();
+            }
         });
     });
 };
@@ -76,3 +85,26 @@ function randomizerArraySimb(array) {
     return array;
 }
 
+// Function to match symbols in selected cards
+function checkMatch() {
+    const [card1, card2] = selectedCards;
+    const isMatch = card1.querySelector('.back').textContent === card2.querySelector('.back').textContent;
+
+    if (isMatch) {
+        selectedCards = [];
+        if (document.querySelectorAll('.is-flipped').length === numberOfCells) {
+            modal.classList.add('modal-open');
+        }
+    } else {
+        lockCard = true;
+        errors++;
+        document.querySelector('.counter').textContent = `Errors: ${errors}`;
+        document.querySelector('#modal-errors').textContent = `${errors} ERRORS`; // Update counter for errors in modal for winning
+        setTimeout(() => {
+            card1.classList.remove('is-flipped');
+            card2.classList.remove('is-flipped');
+            selectedCards = [];
+            lockCard = false;
+        }, 800);
+    }
+};
