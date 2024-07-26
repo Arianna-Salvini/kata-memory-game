@@ -21,15 +21,18 @@ for (let i = 0; i < numberOfCells; i++) {
 
 // Event listener for Start button
 startBtn.addEventListener('click', function () {
+    resetGame(); // Reset game 
     startGame();// Star/restart game
+});
+
+// Event listener per il pulsante Play Again
+playAgainBtn.addEventListener('click', function () {
+    resetGame(); // Reset game 
+    startGame();// Restart game
 });
 
 // FUNCTION
 function startGame() {
-    selectedCards = [];
-    lockCard = false;
-    errors = 0;
-    document.querySelector('.counter').textContent = ` Errors: ${errors}`;
 
     //Duplicate symbols array with spread operator
     const symbolsDouble = [...symbols, ...symbols];
@@ -124,4 +127,14 @@ function showWinModal() {
 function hideModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none'; // Nasconde la modale
+}
+
+// Function for reset game state
+function resetGame() {
+    selectedCards = [];
+    lockCard = false;
+    errors = 0;
+    document.querySelector('.counter').textContent = ` Errors: ${errors}`;
+    const modal = document.getElementById('modal');
+    modal.classList.remove('modal-open');
 }
